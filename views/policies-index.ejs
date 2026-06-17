@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cover Pro Painting - Handbook & Policies</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: Arial, sans-serif; background: #f5f5f5; min-height: 100vh; padding: 20px; }
+    .container { max-width: 900px; margin: 0 auto; }
+    header { background: white; padding: 30px; border-radius: 10px; margin-bottom: 30px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); text-align: center; }
+    h1 { color: #1e3f5a; margin-bottom: 10px; }
+    .subtitle { color: #666; font-size: 14px; }
+    .logout-btn { position: absolute; top: 20px; right: 20px; padding: 8px 16px; background: #999; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 12px; text-decoration: none; display: inline-block; }
+    .logout-btn:hover { background: #666; }
+    .info-box { background: #f0f4ff; border-left: 4px solid #2c5aa0; padding: 15px; border-radius: 5px; margin-bottom: 20px; font-size: 13px; color: #333; }
+    .policies-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
+    .policy-card { background: white; border-radius: 10px; padding: 25px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); transition: all 0.3s; border-top: 4px solid #2c5aa0; cursor: pointer; text-decoration: none; color: inherit; display: block; }
+    .policy-card:hover { transform: translateY(-5px); box-shadow: 0 5px 20px rgba(0,0,0,0.15); }
+    .policy-card h3 { color: #1e3f5a; margin-bottom: 10px; font-size: 16px; }
+    .policy-card p { color: #666; font-size: 13px; line-height: 1.5; margin-bottom: 15px; }
+    .policy-card .btn { background: #2c5aa0; color: white; padding: 10px 20px; border-radius: 5px; text-align: center; font-size: 13px; font-weight: bold; display: inline-block; transition: background 0.3s; }
+    .policy-card:hover .btn { background: #1e3f5a; }
+  </style>
+</head>
+<body>
+  <a href="/logout" class="logout-btn">Logout</a>
+  <div class="container">
+    <header>
+      <h1>Cover Pro Painting</h1>
+      <p class="subtitle">Handbook & Policies - Select a policy to review and acknowledge</p>
+    </header>
+
+    <div class="info-box">
+      <strong>Welcome to the Company Handbook.</strong> Please review the policy below and acknowledge your understanding by completing the form. This ensures we're all on the same page about how we operate.
+    </div>
+
+    <div class="policies-grid">
+      <a href="/policy/mileage-tracking" class="policy-card">
+        <h3>Mileage & Payroll Tracking</h3>
+        <p>Learn how work hours and mileage are tracked using QB Time, the commute rule, and how mileage reimbursement works.</p>
+        <span class="btn">Review & Acknowledge →</span>
+      </a>
+    </div>
+  </div>
+</body>
+</html>

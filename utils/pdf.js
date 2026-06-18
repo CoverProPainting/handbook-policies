@@ -70,4 +70,66 @@ function generateMileageTrackingPDF(data) {
   });
 }
 
-module.exports = { generateMileageTrackingPDF };
+function generateLaptopPolicyPDF(data) {
+  const doc = new PDFDocument({ margin: 40 });
+  let buffers = [];
+  doc.on('data', buffers.push.bind(buffers));
+
+  doc.fontSize(18).font('Helvetica-Bold').text('LAPTOP & ELECTRONIC DEVICE USAGE POLICY', { align: 'center' });
+  doc.fontSize(10).font('Helvetica').text('Employee Handbook Acknowledgment', { align: 'center' });
+  doc.moveDown();
+
+  doc.fontSize(12).font('Helvetica-Bold').text('Purpose');
+  doc.fontSize(10).font('Helvetica').text('This policy establishes standards for the responsible use, security, and return of company-issued laptops and electronic devices. It applies to all employees who are assigned company equipment.');
+  doc.moveDown();
+
+  doc.fontSize(12).font('Helvetica-Bold').text('Equipment Assignment');
+  doc.fontSize(10).font('Helvetica').text('Company-issued devices are provided exclusively for conducting Cover Pro Painting business. Employees are responsible for assigned equipment from the date of issuance until it is returned.');
+  doc.moveDown();
+
+  doc.fontSize(12).font('Helvetica-Bold').text('Acceptable Use');
+  doc.fontSize(10).font('Helvetica').text('Company devices must be used primarily for official business purposes. Limited personal use is permitted if it does not interfere with job duties, violate policy, or incur costs.');
+  doc.moveDown();
+
+  doc.fontSize(12).font('Helvetica-Bold').text('Prohibited Activities');
+  doc.fontSize(10).font('Helvetica').text('• Accessing illegal, explicit, or pirated content\n• Harassment, discrimination, or unlawful activity\n• Bypassing security controls\n• Personal financial gain or outside business\n• Sharing login credentials');
+  doc.moveDown();
+
+  doc.fontSize(12).font('Helvetica-Bold').text('No Expectation of Privacy');
+  doc.fontSize(10).font('Helvetica').text('Employees have no expectation of privacy when using company devices. The company reserves the right to monitor, access, and record activity at any time.');
+  doc.moveDown();
+
+  doc.fontSize(12).font('Helvetica-Bold').text('Security Responsibilities');
+  doc.fontSize(10).font('Helvetica').text('• Devices must not be left unattended in public spaces\n• Login credentials must be kept confidential\n• Lost, stolen, or compromised devices must be reported immediately\n• Security incidents must be reported immediately');
+  doc.moveDown();
+
+  doc.fontSize(12).font('Helvetica-Bold').text('Return of Equipment');
+  doc.fontSize(10).font('Helvetica').text('All devices remain company property. Equipment must be returned immediately upon request or upon separation from employment.');
+  doc.moveDown();
+
+  doc.fontSize(12).font('Helvetica-Bold').text('Liability for Loss or Damage');
+  doc.fontSize(10).font('Helvetica').text('Employees may be held financially responsible for willful failure to return equipment or intentional damage. Recoupment fees up to $250 may be deducted from final paycheck per Washington State law.');
+  doc.moveDown();
+
+  doc.fontSize(12).font('Helvetica-Bold').text('Acknowledgment');
+  doc.fontSize(10).font('Helvetica').text('I have read and understand the Laptop & Electronic Device Usage Policy. I understand my responsibilities for the security and return of company equipment, and I authorize the company to monitor device usage and deduct recoupment fees from my final paycheck if applicable.');
+  doc.moveDown();
+
+  doc.fontSize(10).font('Helvetica-Bold').text('Employee Name (print):');
+  doc.fontSize(10).font('Helvetica').text(data.employeeName || '___________________________________');
+  doc.moveDown(0.3);
+
+  doc.fontSize(10).font('Helvetica-Bold').text('Employee Signature:');
+  doc.fontSize(10).font('Helvetica').text(data.employeeSignature || '___________________________________');
+  doc.moveDown(0.2);
+
+  doc.fontSize(9).text('Date: ' + new Date().toLocaleDateString());
+
+  doc.end();
+  return new Promise((resolve) => {
+    doc.on('end', () => {
+      resolve(Buffer.concat(buffers));
+    });
+  });
+}
+module.exports = { generateMileageTrackingPDF, generateLaptopPolicyPDF };
